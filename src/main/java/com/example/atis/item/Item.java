@@ -1,6 +1,7 @@
 package com.example.atis.item;
 
 import com.example.atis.item.category.ItemCategory;
+import com.example.atis.units.Unit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,8 +30,9 @@ public class Item {
     @JoinColumn(name = "category_id", nullable = false)
     private ItemCategory category; // Связь с категорией
 
-    @Column(nullable = false)
-    private String unit; // Единица измерения, например м², шт.
+    @OneToOne
+    @JoinColumn(name = "unit_id", nullable = false)
+    private Unit unit; // Единица измерения, например м², шт.
 
     @Column(nullable = false)
     private Boolean isActive = true; // Активен ли элемент

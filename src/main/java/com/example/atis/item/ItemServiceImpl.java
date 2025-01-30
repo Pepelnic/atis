@@ -2,6 +2,7 @@ package com.example.atis.item;
 
 import com.example.atis.item.category.ItemCategory;
 import com.example.atis.item.log.ItemLogService;
+import com.example.atis.units.Unit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class ItemServiceImpl implements ItemService {
     private final ItemLogService itemLogService;
 
     @Override
-    public Item createItem(String name, ItemCategory category, String unit, boolean isActive) {
+    public Item createItem(String name, ItemCategory category, Unit unit, boolean isActive) {
         Item item = Item.builder()
                 .name(name)
                 .category(category)
@@ -43,7 +44,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item updateItem(Long id, String newName, String newUnit, String changedBy) {
+    public Item updateItem(Long id, String newName, Unit newUnit, String changedBy) {
         Item item = getItemById(id);
 
         // Сохраняем старое значение
